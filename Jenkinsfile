@@ -28,6 +28,9 @@ node {
           sh 'echo package'
         }
     }
+    stage('Update Slack') {
+        slackSend channel: 'devops-nov-2020', color: 'red', message: 'Build Success $BUILD_ID'
+    }
     stage('Publish Artifact') {
         //archiveArtifacts artifacts: '**/*.jar', followSymlinks: false
         mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: '', to: 'atin.singh@gmail.com'

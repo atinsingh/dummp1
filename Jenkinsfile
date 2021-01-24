@@ -29,7 +29,7 @@ node {
         }
     }
     stage('Update Slack') {
-        slackSend channel: 'devops-nov-2020', color: 'red', message: 'Build Success Job '${JOB_NAME}' '${BUILD_NUMBER}''
+        slackSend channel: 'devops-nov-2020', color: 'red', message: "Build Success Job '${JOB_NAME}' '${BUILD_NUMBER}'"
     }
     stage('Publish Artifact') {
         //archiveArtifacts artifacts: '**/*.jar', followSymlinks: false

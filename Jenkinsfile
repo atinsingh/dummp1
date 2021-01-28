@@ -1,16 +1,16 @@
 node {
-    
+    def MAVEN_HOME = tool 'm3';
     stage('Checkout SCM') {
         git branch: 'master', url: 'https://github.com/atinsingh/dummp1.git'
     }
     stage('Compile ') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-           sh 'mvn compile'
+           sh '${MAVEN_HOME}/bin/mvn compile'
          }
     }
     stage('Unit Test') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-           sh 'mvn Test'
+           sh '{MAVEN_HOME}/bin/mvn Test'
        }
     }
     stage('Publish Test Result') {
@@ -18,7 +18,7 @@ node {
     }
     stage('Package') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-          sh 'mvn package'
+          sh '{MAVEN_HOME}/bin/mvn package'
         }
     }
     stage('Publish Artifact') {

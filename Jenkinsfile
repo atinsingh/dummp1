@@ -6,7 +6,7 @@ node {
     }
     stage('Compile ') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-           sh "mvn compile"
+           sh "'${MAVEN_HOME}/bin/mvn' compile"
          }
     }
     stage('Unit Test') {

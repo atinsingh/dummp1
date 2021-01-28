@@ -6,12 +6,12 @@ node {
     }
     stage('Compile ') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-           sh "'${MAVEN_HOME}'/bin/mvn compile"
+           sh "mvn compile"
          }
     }
     stage('Unit Test') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-           sh '${MAVEN_HOME}/bin/mvn test'
+           sh 'mvn test'
        }
     }
     stage('Publish Test Result') {
@@ -19,7 +19,7 @@ node {
     }
     stage('Package') {
         withMaven(jdk: 'jdk8', maven: 'm3') {
-          sh '${MAVEN_HOME}/bin/m package'
+          sh 'mvn package'
         }
     }
     stage('Publish Artifact') {

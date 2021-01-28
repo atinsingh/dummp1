@@ -1,7 +1,7 @@
 node {
     def MAVEN_HOME = tool 'm3';
     stage('Checkout SCM') {
-        sh 'export PATH=$PATH:${MAVEN_HOME}/bin'
+        sh 'export PATH=$PATH:$MAVEN_HOME/bin'
         git branch: 'master', url: 'https://github.com/atinsingh/dummp1.git'
     }
     stage('Compile ') {
